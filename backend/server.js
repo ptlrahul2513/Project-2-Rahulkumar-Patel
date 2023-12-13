@@ -33,7 +33,7 @@ server.get("/products", async (request, response) =>{
     response.send(products);
 });
 
-server.post("/addProduct", (request, response) =>{
+server.post("/addProduct", async(request, response) =>{
   const product = request.body
   const postProduct = new Product({
     id: product.id,
@@ -43,4 +43,5 @@ server.post("/addProduct", (request, response) =>{
     image: product.image,
     price: product.price,
   });
+  const saveProduct = await postProduct.save()
 });
