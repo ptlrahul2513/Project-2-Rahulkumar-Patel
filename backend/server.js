@@ -43,5 +43,8 @@ server.post("/addProduct", async(request, response) =>{
     image: product.image,
     price: product.price,
   });
-  const saveProduct = await postProduct.save()
+  const saveProduct = await postProduct.save();
+  saveProduct
+  ? response.send("Product is added to inventory") 
+  : response.send("Failed to add!");
 });
